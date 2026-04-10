@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Premium Capital and Investment Solution Ltd</TITLE>
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<META 
+content="Investment, School, Big, Consulting, Knowledge, Centre, Careers, Plus, Market, Relations, Community, WebThinkers, www.webthinkers.net" 
+name=keywords>
+<META content=RevealTrans(Duration=4,Transition=12) http-equiv=Page-Enter><LINK 
+href="icons/favicon.ico" rel=icon><LINK href="icons/favicon.ico" 
+rel="SHORTCUT ICON"><LINK href="main.css" 
+rel=stylesheet type=text/css>
+<META content="MSHTML 5.00.2920.0" name=GENERATOR>
+<META content="MSHTML 5.00.2920.0" name=GENERATOR>
+<META content=ALL name=robots>
+<META content=Global name=distribution>
+<META content=General name=rating>
+<META content="2006 Outrage." name=copyright>
+<META content="Seun Adeboyejo" name=author>
+<META http-equiv=reply-to content=info@webthinkers.net>
+<META content=English name=language>
+<META content="Web Page" name=doc-type>
+<META content=Completed name=doc-class>
+<META content=Public name=doc-rights>
+<META content="MSHTML 5.00.2920.0" name=GENERATOR>
+
+
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+}
+a {
+	font-size: 11px;
+	color: #FFFFFF;
+}
+a:link {
+	text-decoration: none;
+	color: #FB6F10;
+}
+a:visited {
+	text-decoration: none;
+	color: #000000;
+}
+a:hover {
+	text-decoration: underline;
+	color: #666666;
+}
+a:active {
+	text-decoration: none;
+	color: #000000;
+}
+body {
+	background-color: #CCCCCC;
+}
+.style2 {color: #333333}
+.style3 {color: #FFFFFF}
+.style4 {color: #333333; font-weight: bold; }
+-->
+</style></HEAD>
+<BODY>
+<?php
+$msg = "Feedback from Premium Capital's website. \n\n";
+$msg .= "Name: $_POST[name]\n";
+$msg .= "Phone: $_POST[phone]\n";
+$msg .= "E-mail: $_POST[email]\n";
+$msg .= "Address: $_POST[address]\n";
+$msg .= "message: $_POST[message]\n";
+$email =  $_POST[email];
+//set up the mail
+$subject = "Feedback sent from Premium Capital's website";//$_POST[subject];
+$recipient = "info@premiumcapitalng.com"; //$_POST[recipient];
+$mailheaders = "From: Premium Capital's website $email";
+$mailheaders .= "Reply-To: $_POST[email]";
+//send the mail
+mail($recipient, $subject, $msg, $mailheaders);
+?>
+<table width="779" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><table border="0" cellpadding="0" cellspacing="0" width="1000">
+      <!-- fwtable fwsrc="banner.png" fwbase="premium.jpg" fwstyle="Dreamweaver" fwdocid = "1262345078" fwnested="0" -->
+      <tr>
+        <td><img src="images/spacer.gif" width="99" height="1" border="0" alt="" /></td>
+        <td><img src="images/spacer.gif" width="97" height="1" border="0" alt="" /></td>
+        <td><img src="images/spacer.gif" width="105" height="1" border="0" alt="" /></td>
+        <td><img src="images/spacer.gif" width="195" height="1" border="0" alt="" /></td>
+        <td><img src="images/spacer.gif" width="2" height="1" border="0" alt="" /></td>
+        <td><img src="images/spacer.gif" width="484" height="1" border="0" alt="" /></td>
+        <td><img src="images/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+        <td><img src="images/spacer.gif" width="17" height="1" border="0" alt="" /></td>
+        <td><img src="images/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+      </tr>
+      <tr>
+        <td colspan="3"><img name="premium_r1_c1" src="images/premium_r1_c1.jpg" width="301" height="66" border="0" id="premium_r1_c1" alt="" /></td>
+        <td rowspan="3" colspan="2"><img src="images/premium_r1_c4.jpg" alt="Feedback" name="premium_r1_c4" width="197" height="273" border="0" usemap="#premium_r1_c4Map" id="premium_r1_c4" />
+          <map name="premium_r1_c4Map">
+            <area shape="rect" coords="2,175,195,205" href="feedback.html" alt="Feedback">
+            <area shape="rect" coords="2,140,195,170" href="contact.html" alt="Contact Us">
+            <area shape="rect" coords="2,110,195,140" href="newsline.html" alt="News Line">
+            <area shape="rect" coords="2,80,195,110" href="services.html" alt="Services">
+            <area shape="rect" coords="2,49,195,79" href="profile.html" alt="Profile">
+            <area shape="rect" coords="2,17,195,47" href="index.html" alt="Home">
+          </map></td>
+        <td rowspan="3"><img name="premium_r1_c6" src="images/premium_r1_c6.jpg" width="484" height="273" border="0" id="premium_r1_c6" alt="" /></td>
+        <td rowspan="3"><img name="premium_r1_c7" src="images/premium_r1_c7.jpg" width="1" height="273" border="0" id="premium_r1_c7" alt="" /></td>
+        <td rowspan="3"><img name="premium_r1_c8" src="images/premium_r1_c8.jpg" width="17" height="273" border="0" id="premium_r1_c8" alt="" /></td>
+        <td><img src="images/spacer.gif" width="1" height="66" border="0" alt="" /></td>
+      </tr>
+      <tr>
+        <td rowspan="2"><img name="premium_r2_c1" src="images/premium_r2_c1.jpg" width="99" height="207" border="0" id="premium_r2_c1" alt="" /></td>
+        <td><img name="premium_r2_c2" src="images/premium_r2_c2.jpg" width="97" height="110" border="0" id="premium_r2_c2" alt="" /></td>
+        <td rowspan="2"><img name="premium_r2_c3" src="images/premium_r2_c3.jpg" width="105" height="207" border="0" id="premium_r2_c3" alt="" /></td>
+        <td><img src="images/spacer.gif" width="1" height="110" border="0" alt="" /></td>
+      </tr>
+      <tr>
+        <td><img name="premium_r3_c2" src="images/premium_r3_c2.jpg" width="97" height="97" border="0" id="premium_r3_c2" alt="" /></td>
+        <td><img src="images/spacer.gif" width="1" height="97" border="0" alt="" /></td>
+      </tr>
+      <tr>
+        <td colspan="8" rowspan="4" background="images/premium_r4_c1.jpg"><table width="1001" height="30" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="333" height="13">&nbsp;</td>
+            <td width="165">&nbsp;</td>
+            <td width="502" background="images/feedback.jpg">&nbsp;</td>
+          </tr>
+          
+        </table></td>
+        <td><img src="images/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+      </tr>
+      <tr>
+        <td><img src="images/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+      </tr>
+      <tr>
+        <td><img src="images/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+      </tr>
+      <tr>
+        <td><img src="images/spacer.gif" width="1" height="27" border="0" alt="" /></td>
+      </tr>
+      <tr>
+        <td height="277" colspan="3" background="images/premium_r8_c1.jpg" bgcolor="#CCCCCC"><table width="283" height="272" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="11" height="272">&nbsp;</td>
+            <td width="272"><br>
+              <p align="justify" class="style2"><strong>Premium Capital operates in two modes</strong>:</p>
+              <p align="justify" class="style2">We package the whole investment suit for your organization; from preparing the business case (highlighting the technical feasibility and modeling the financial viability) to sourcing the finances, and locating other potential partners to bring projects to a successful conclusion.<span class="style2"><br>
+                <br>
+                Where a business case is already packaged by another party, we review it for depth of information and conformity to standard. We proceed to deliver in line with the project requirement if the business case is acceptable to us. Otherwise, we either highlight areas requiring amendment for the project owners or undertake the amendment at the instance of the promoters.</span><br>
+              </p>              </td>
+          </tr>
+        </table></td>
+        <td background="images/premium_r8_c4.jpg"><br>
+            <br>
+            <br>
+            <li></li>
+            <a href="http://www.nigerianstockexchange.com" target="_blank"><font color="#FFFFFF">The Nigerian Stock Exchange</font></a>
+		
+		<br>
+		<li></li>
+        <a href="http://www.nesgroup.org" target="_blank"><font color="#FFFFFF" size="1">Nigerian Economic Summit Group</font><font color="#FFFFFF"></font></a>
+		<br>
+		<li></li>
+		<a href="http://www.cenbank.org" target="_blank"><font color="#FFFFFF">Central Bank of Nigeria</font></a>
+		<br><li></li>
+
+		<a href="http://www.customs.gov.ng" target="_blank"><font color="#FFFFFF">Nigerian Customs Services</font></a>
+		<br><li></li>
+
+		<a href="http://www.businessworldng.com" target="_blank"><font color="#FFFFFF">BusinessWorld Intelligence</font></a>
+		<br>
+		<li></li>
+		       <a href="http://www.worldbank.com" target="_blank"><font color="#FFFFFF">The World Bank</font></a>
+		<br><li></li>
+		      <a href="http://www.imf.org" target="_blank"><font color="#FFFFFF">International Monetary Fund</font></a>		<br>
+		<li></li> 
+		
+		<a href="www.nigerianeconomy.com" target="_blank"><font color="#FFFFFF">National Planning Commission</font></a></td>
+        <td colspan="4" background="images/premium_r8_c5.jpg" bgcolor="#CCCCCC"><blockquote>
+          <p>&nbsp;</p>
+          <p class="style2">Thank you,</p>
+          <p class="style2">We have recieved your message we will get back to you soon.</p>
+          <p class="style4">Premium Capital   and Investment Solution. </p>
+        </blockquote></td>
+        <td><img src="images/spacer.gif" width="1" height="277" border="0" alt="" /></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="100"><div align="center" class="style3">
+      <p><br>
+        </p>
+      <p><span class="style2">Home | Profile | Services | News Line | Contact Us | Feedbak | Careers |Contact</span></p>
+      <p class="style2">Copyright &copy;::: Premium Capital and Investment Solution Ltd 2007. All Right Reserved.</p>
+      <p class="style2">Site design: Webthinkers.</p>
+    </div>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">try {var pageTracker = _gat._getTracker("UA-3915335-4");pageTracker._trackPageview();} catch(err) {}</script>
+
+</BODY></HTML>
