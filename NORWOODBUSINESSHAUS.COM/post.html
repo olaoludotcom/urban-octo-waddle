@@ -1,0 +1,313 @@
+<?php require_once('Connections/nbh.php'); ?><?php
+//initialize the session
+if (!isset($_SESSION)) {
+  session_start();
+}
+
+// ** Logout the current user. **
+$logoutAction = $_SERVER['PHP_SELF']."?doLogout=true";
+if ((isset($_SERVER['QUERY_STRING'])) && ($_SERVER['QUERY_STRING'] != "")){
+  $logoutAction .="&". htmlentities($_SERVER['QUERY_STRING']);
+}
+
+if ((isset($_GET['doLogout'])) &&($_GET['doLogout']=="true")){
+  //to fully log out a visitor we need to clear the session varialbles
+  $_SESSION['MM_Username'] = NULL;
+  $_SESSION['MM_UserGroup'] = NULL;
+  $_SESSION['PrevUrl'] = NULL;
+  unset($_SESSION['MM_Username']);
+  unset($_SESSION['MM_UserGroup']);
+  unset($_SESSION['PrevUrl']);
+	
+  $logoutGoTo = "index.php";
+  if ($logoutGoTo) {
+    header("Location: $logoutGoTo");
+    exit;
+  }
+}
+?>
+<?php
+if (!isset($_SESSION)) {
+  session_start();
+}
+$MM_authorizedUsers = "";
+$MM_donotCheckaccess = "true";
+
+// *** Restrict Access To Page: Grant or deny access to this page
+function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
+  // For security, start by assuming the visitor is NOT authorized. 
+  $isValid = False; 
+
+  // When a visitor has logged into this site, the Session variable MM_Username set equal to their username. 
+  // Therefore, we know that a user is NOT logged in if that Session variable is blank. 
+  if (!empty($UserName)) { 
+    // Besides being logged in, you may restrict access to only certain users based on an ID established when they login. 
+    // Parse the strings into arrays. 
+    $arrUsers = Explode(",", $strUsers); 
+    $arrGroups = Explode(",", $strGroups); 
+    if (in_array($UserName, $arrUsers)) { 
+      $isValid = true; 
+    } 
+    // Or, you may restrict access to only certain users based on their username. 
+    if (in_array($UserGroup, $arrGroups)) { 
+      $isValid = true; 
+    } 
+    if (($strUsers == "") && true) { 
+      $isValid = true; 
+    } 
+  } 
+  return $isValid; 
+}
+
+$MM_restrictGoTo = "accesscheck.php";
+if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
+  $MM_qsChar = "?";
+  $MM_referrer = $_SERVER['PHP_SELF'];
+  if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
+  if (isset($QUERY_STRING) && strlen($QUERY_STRING) > 0) 
+  $MM_referrer .= "?" . $QUERY_STRING;
+  $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
+  header("Location: ". $MM_restrictGoTo); 
+  exit;
+}
+?>
+<?php
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  $theValue = (!get_magic_quotes_gpc()) ? addslashes($theValue) : $theValue;
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? "'" . doubleval($theValue) . "'" : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+
+$editFormAction = $_SERVER['PHP_SELF'];
+if (isset($_SERVER['QUERY_STRING'])) {
+  $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
+}
+
+if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "post")) {
+  $insertSQL = sprintf("INSERT INTO forum (`user`, topic, Comment, `date`) VALUES (%s, %s, %s, %s)",
+                       GetSQLValueString($_POST['user'], "text"),
+                       GetSQLValueString($_POST['topic'], "text"),
+                       GetSQLValueString($_POST['comment'], "text"),
+                       GetSQLValueString($_POST['date'], "text"));
+
+  mysql_select_db($database_nbh, $nbh);
+  $Result1 = mysql_query($insertSQL, $nbh) or die(mysql_error());
+
+  $insertGoTo = "forum.php";
+  if (isset($_SERVER['QUERY_STRING'])) {
+    $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
+    $insertGoTo .= $_SERVER['QUERY_STRING'];
+  }
+  header(sprintf("Location: %s", $insertGoTo));
+}
+?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Welcome to Norwood Business Haus</TITLE>
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<META 
+content="Norwood" 
+name=keywords>
+<META content=RevealTrans(Duration=4,Transition=12) http-equiv=Page-Enter><LINK 
+href="icons/favicon.ico" rel=icon><LINK href="icons/favicon.ico" 
+rel="SHORTCUT ICON"><LINK href="main.css" 
+rel=stylesheet type=text/css>
+<META content="MSHTML 5.00.2920.0" name=GENERATOR><style type="text/css">
+<!--
+body {
+	background-color: #003333;
+}
+.style1 {
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 11px;
+}
+body,td,th {
+	color: #003333;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #333333;
+}
+a:hover {
+	text-decoration: underline;
+	color: #333333;
+}
+a:active {
+	text-decoration: none;
+	color: #003333;
+}
+a {
+	font-size: 11px;
+}
+.style3 {color: #003333; font-size: 10px; }
+.style14 {color: #FFFFFF; font-size: 11px; }
+.style17 {font-size: 8px}
+.style19 {font-size: 10px}
+.style8 {color: #003333}
+-->
+</style>
+
+</HEAD>
+<BODY>
+<table width="783" height="979" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#003333" bgcolor="#FFFFFF">
+  <tr>
+    <td width="779" height="292" valign="top" background="images/banner9.png"><table width="779" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="81" valign="top"><table width="779" height="99" border="0" cellpadding="0" cellspacing="0" background="images/logo.jpg">
+            <tr>
+              <td width="350" height="99">&nbsp;</td>
+              <td width="429"><form method="POST" action="<?php echo $loginFormAction; ?>" name="login">
+                <table 
+                              width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+                  <tbody>
+                    <tr>
+                      <td height="46" colspan="3" valign="top" class="style1"><br>
+                        Welcome to NBH Business Forum Centre<br>
+                        <br></td>
+                    </tr>
+                    <tr>
+                      <td width="179" height="14" valign="top" class="style14"><a href="<?php echo $logoutAction ?>"><font color="#FFFFFF">Log out from this page.</font></a>&nbsp; &nbsp;</td>
+                      <td valign="top" width="189">&nbsp;</td>
+                      <td valign="top" width="45">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3" height="26" valign="bottom" class="style14">&nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;   &nbsp;</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </form></td>
+            </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td height="161" valign="top" bgcolor="#FFFFFF"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+  codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,42,0"
+  id="Movie" width="779" height="161">
+            <param name="movie" value="Movie.swf">
+            <param name="quality" value="high">
+            <param name="wmode" value="transparent">
+            <param name="bgcolor" value="#990000">
+            <embed name="Movie" src="Movie.swf"
+     quality="high" wmode="transparent" bgcolor="#990000" swLiveConnect="true"
+     width="779" height="161"
+     type="application/x-shockwave-flash"
+     pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
+        </object></td>
+      </tr>
+      <tr>
+        <td height="30"><img src="images/link.jpg" width="779" height="30" border="0" usemap="#Map"></td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+    <td height="549" bgcolor="#FFFFFF"><table width="778" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="584"><p><br>  
+              <br>  
+          <br>
+          <img src="images/forum.jpg" width="238" height="23"></p>
+          <p>&nbsp;</p>
+		  <form method="POST" action="<?php echo $editFormAction; ?>" name="post">
+          <table width="473" height="249" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td height="38">&nbsp;</td>
+              <td colspan="2">Send us your qustions on any business issues. </td>
+              </tr>
+            <tr>
+              <td width="54" height="29">&nbsp;</td>
+              <td width="157">Your Name:</td>
+              <td width="262"><input name="user" type="text" id="user" maxlength="40"></td>
+            </tr>
+
+            <tr>
+              <td height="28">&nbsp;</td>
+              <td>Your Topic:</td>
+              <td><input name="topic" type="text" id="topic" maxlength="90"></td>
+            </tr>
+            <tr>
+              <td height="14">&nbsp;</td>
+              <td>Comment / Message:</td>
+              <td><textarea name="comment" cols="30" rows="7" id="comment"></textarea>
+                <INPUT type="hidden" name=date id=date size=15 maxlength="40" 
+value="<?php echo date("d:m:y h:i:s", time()); ?>"></td>
+            </tr>
+            <tr>
+              <td height="31">&nbsp;</td>
+              <td>&nbsp;</td>
+              <td><br>
+                <label>
+                <input type="submit" name="Submit" value="Send to forum">
+                <input type="reset" name="Submit4" value="Reset">
+                </label></td>
+            </tr>
+            <tr>
+              <td height="14">&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+          <input type="hidden" name="MM_insert" value="post">
+		  </form>
+          <p>&nbsp;</p></td>
+        <td width="194"><iframe marginwidth="0" 
+            marginheight="0" src="right.html" 
+            frameborder="0" width="202" height="1" target="contents"></iframe></td>
+      </tr>
+      
+      <tr>
+        <td height="83" colspan="2">
+          <p>&nbsp;</p>
+          <p align="center"><span class="style8"><a href="index.php">Home</a> | <a href="whoweare.php">Who we are</a> | <a href="whatwedo.php">What we do</a> | <a href="forum.php">Business Forum </a> | <a href="news.php">News/Events</a> | <a href="enquire.php">Enquire</a> | <a href="contactus.php">Contact us</a><br>
+              <br>
+              <span class="style3">Copyright &copy;2007 Norwood Business Haus. All 
+                    Rights Reserved.</span></span><br>
+                    <span class="style19">A <a href="http://www.webthinkers.net" target="_blank">webThinkers</a></span> design. </p>     </td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+
+
+
+<map name="Map">
+        <area shape="rect" coords="26,13,68,26" href="index.html">
+        <area shape="rect" coords="105,12,193,26" href="whoweare.html">
+        <area shape="rect" coords="228,14,316,27" href="whatwedo.html">
+        <area shape="rect" coords="359,14,404,27" href="forum.html">
+        <area shape="rect" coords="454,13,557,27" href="news.html">
+        <area shape="rect" coords="597,11,650,27" href="equire.html">
+        <area shape="rect" coords="688,13,763,26" href="contact.html">
+      </map>
+
+<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">try {var pageTracker = _gat._getTracker("UA-3915335-1");pageTracker._trackPageview();} catch(err) {}</script>
+
+</BODY></HTML>

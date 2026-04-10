@@ -1,0 +1,329 @@
+<?php require_once('Connections/nbh.php'); ?><?php
+//initialize the session
+if (!isset($_SESSION)) {
+  session_start();
+}
+
+// ** Logout the current user. **
+$logoutAction = $_SERVER['PHP_SELF']."?doLogout=true";
+if ((isset($_SERVER['QUERY_STRING'])) && ($_SERVER['QUERY_STRING'] != "")){
+  $logoutAction .="&". htmlentities($_SERVER['QUERY_STRING']);
+}
+
+if ((isset($_GET['doLogout'])) &&($_GET['doLogout']=="true")){
+  //to fully log out a visitor we need to clear the session varialbles
+  $_SESSION['MM_Username'] = NULL;
+  $_SESSION['MM_UserGroup'] = NULL;
+  $_SESSION['PrevUrl'] = NULL;
+  unset($_SESSION['MM_Username']);
+  unset($_SESSION['MM_UserGroup']);
+  unset($_SESSION['PrevUrl']);
+	
+  $logoutGoTo = "index.php";
+  if ($logoutGoTo) {
+    header("Location: $logoutGoTo");
+    exit;
+  }
+}
+?>
+<?php
+if (!isset($_SESSION)) {
+  session_start();
+}
+$MM_authorizedUsers = "";
+$MM_donotCheckaccess = "true";
+
+// *** Restrict Access To Page: Grant or deny access to this page
+function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
+  // For security, start by assuming the visitor is NOT authorized. 
+  $isValid = False; 
+
+  // When a visitor has logged into this site, the Session variable MM_Username set equal to their username. 
+  // Therefore, we know that a user is NOT logged in if that Session variable is blank. 
+  if (!empty($UserName)) { 
+    // Besides being logged in, you may restrict access to only certain users based on an ID established when they login. 
+    // Parse the strings into arrays. 
+    $arrUsers = Explode(",", $strUsers); 
+    $arrGroups = Explode(",", $strGroups); 
+    if (in_array($UserName, $arrUsers)) { 
+      $isValid = true; 
+    } 
+    // Or, you may restrict access to only certain users based on their username. 
+    if (in_array($UserGroup, $arrGroups)) { 
+      $isValid = true; 
+    } 
+    if (($strUsers == "") && true) { 
+      $isValid = true; 
+    } 
+  } 
+  return $isValid; 
+}
+
+$MM_restrictGoTo = "accesscheck.php";
+if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
+  $MM_qsChar = "?";
+  $MM_referrer = $_SERVER['PHP_SELF'];
+  if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
+  if (isset($QUERY_STRING) && strlen($QUERY_STRING) > 0) 
+  $MM_referrer .= "?" . $QUERY_STRING;
+  $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
+  header("Location: ". $MM_restrictGoTo); 
+  exit;
+}
+?>
+<?php
+$currentPage = $_SERVER["PHP_SELF"];
+
+$maxRows_forum = 10;
+$pageNum_forum = 0;
+if (isset($_GET['pageNum_forum'])) {
+  $pageNum_forum = $_GET['pageNum_forum'];
+}
+$startRow_forum = $pageNum_forum * $maxRows_forum;
+
+mysql_select_db($database_nbh, $nbh);
+$query_forum = "SELECT * FROM forum";
+$query_limit_forum = sprintf("%s LIMIT %d, %d", $query_forum, $startRow_forum, $maxRows_forum);
+$forum = mysql_query($query_limit_forum, $nbh) or die(mysql_error());
+$row_forum = mysql_fetch_assoc($forum);
+
+if (isset($_GET['totalRows_forum'])) {
+  $totalRows_forum = $_GET['totalRows_forum'];
+} else {
+  $all_forum = mysql_query($query_forum);
+  $totalRows_forum = mysql_num_rows($all_forum);
+}
+$totalPages_forum = ceil($totalRows_forum/$maxRows_forum)-1;
+
+$queryString_forum = "";
+if (!empty($_SERVER['QUERY_STRING'])) {
+  $params = explode("&", $_SERVER['QUERY_STRING']);
+  $newParams = array();
+  foreach ($params as $param) {
+    if (stristr($param, "pageNum_forum") == false && 
+        stristr($param, "totalRows_forum") == false) {
+      array_push($newParams, $param);
+    }
+  }
+  if (count($newParams) != 0) {
+    $queryString_forum = "&" . htmlentities(implode("&", $newParams));
+  }
+}
+$queryString_forum = sprintf("&totalRows_forum=%d%s", $totalRows_forum, $queryString_forum);
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Welcome to Norwood Business Haus</TITLE>
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<META 
+content="Norwood" 
+name=keywords>
+<META content=RevealTrans(Duration=4,Transition=12) http-equiv=Page-Enter><LINK 
+href="icons/favicon.ico" rel=icon><LINK href="icons/favicon.ico" 
+rel="SHORTCUT ICON"><LINK href="main.css" 
+rel=stylesheet type=text/css>
+<META content="MSHTML 5.00.2920.0" name=GENERATOR><style type="text/css">
+<!--
+body {
+	background-color: #003333;
+}
+.style1 {
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 11px;
+}
+body,td,th {
+	color: #003333;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #333333;
+}
+a:hover {
+	text-decoration: underline;
+	color: #333333;
+}
+a:active {
+	text-decoration: none;
+	color: #003333;
+}
+a {
+	font-size: 11px;
+}
+.style8 {color: #003333}
+.style3 {color: #003333; font-size: 10px; }
+.style14 {color: #FFFFFF; font-size: 11px; }
+.style19 {font-size: 10px}
+.style20 {	font-size: 10px;
+	font-weight: bold;
+}
+-->
+</style>
+
+</HEAD>
+<BODY>
+<table width="783" height="980" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#003333" bgcolor="#FFFFFF">
+  <tr>
+    <td width="779" height="293" valign="top" background="images/fla.jpg"><table width="779" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="81" valign="top"><table width="779" height="99" border="0" cellpadding="0" cellspacing="0" background="images/logo.jpg">
+          <tr>
+            <td width="350" height="99">&nbsp;</td>
+            <td width="429"><form method="POST" action="<?php echo $loginFormAction; ?>" name="login">
+                  <table 
+                              width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+                      <tbody>
+                        <tr>
+                          <td height="26" colspan="3" valign="top" class="style1"><br>
+                            Business Forum. <a href="register.php"><font color="#FFFFFF">For registered members only</font></a>. <br>
+                            <br></td>
+                        </tr>
+                        <tr>
+                          <td width="179" height="29" valign="top" class="style14">Username :
+                            <input name="username" class="joke_body" id="username" size="15" />                       </td>
+                          <td valign="top" width="189"><span class="style14">Password :
+                            <input name="password" 
+                                type="password" class="joke_body" 
+                                id="password" size="15" />
+                          </span></td>
+                          <td valign="top" width="45"><input name="Submit" type="submit" class="meg_read " id="Submit" value="Enter" /></td>
+                        </tr>
+                        <tr>
+                          <td colspan="3" height="13" valign="bottom" class="style14"><a href="register.php"><font color="#FFFFFF">Not yet  Registered? Click here</font></a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;   &nbsp;  &nbsp;&nbsp; <a href="password.php"><font color="#FFFFFF">Forgotten your Password?</font></a> </span></td>
+                        </tr>
+                      </tbody>
+                </table></form></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td height="161" valign="top" bgcolor="#FFFFFF"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+  codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,42,0"
+  id="Movie" width="779" height="161">
+  <param name="movie" value="Movie.swf">
+  <param name="quality" value="high">
+  <param name="wmode" value="transparent">
+  <param name="bgcolor" value="#990000">
+    <embed name="Movie" src="Movie.swf"
+     quality="high" wmode="transparent" bgcolor="#990000" swLiveConnect="true"
+     width="779" height="161"
+     type="application/x-shockwave-flash"
+     pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
+</object></td>
+      </tr>
+      <tr>
+        <td height="30"><img src="images/link.jpg" width="779" height="30" border="0" usemap="#Map"></td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+    <td height="542" bgcolor="#FFFFFF"><table width="778" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="584"><p><br>
+              <img src="images/forum.jpg" width="238" height="23"></p>
+          <TABLE 
+            width="100%" border="1" cellPadding=3 cellSpacing=3 bordercolor="#FFFFFF" style="TABLE-LAYOUT: fixed">
+            <TBODY>
+              <TR>
+                <TD width="28%" vAlign=top bordercolor="#CCCCCC" style="OVERFLOW: hidden" align="center"><div align="center" class="style8">From</div></TD>
+                <TD width="72%" vAlign=top bordercolor="#CCCCCC">|| <a href="post.php">Ask your questions </a>||</TD>
+              </TR>
+              <?php do { ?>
+              <TR>
+                <TD vAlign=top bordercolor="#CCCCCC" style="OVERFLOW: hidden"><p align="center"><br>
+                        <br>
+                        <br>
+                        <br>
+                        <?php echo $row_forum['user']; ?><br>
+                  </p>
+                    <DIV class=smalltext>
+                      <div align="center"></div>
+                    </DIV></TD>
+                <TD height="100%" vAlign=top bordercolor="#CCCCCC"><TABLE width="100%" border=0 cellpadding="0" cellspacing="0">
+                    <TBODY>
+                      <TR>
+                        <TD vAlign=center><?php echo $row_forum['topic']; ?> Posted on <?php echo $row_forum['date']; ?></&raquo; </TD>
+                        <TD style="FONT-SIZE: smaller" vAlign=bottom align=right 
+                      height=20><A 
+                        href="http://enownow.com/forum/index.php?action=post;quote=8;topic=8.0;num_replies=24;sesc=9b986f4cd26b9a77fa92a254151ae1b5"></A> </TD>
+                      </TR>
+                    </TBODY>
+                  </TABLE>
+                    <HR color="#FFFFFF" class=hrcolor width="100%" SIZE=1></p>
+                    <?php echo $row_forum['comment']; ?></TD>
+              </TR>
+              <?php } while ($row_forum = mysql_fetch_assoc($forum)); ?>
+              <TR>
+                <TD vAlign=top bordercolor="#CCCCCC" style="OVERFLOW: hidden"></TD>
+                <TD width="72%" vAlign=top bordercolor="#CCCCCC"><a href="discussion.php"></a> || <a href="post.php">Ask your questions </a> ||</TD>
+              </TR>
+            </TBODY>
+          </TABLE>
+          <p>&nbsp;</p>
+          <table border="0" width="50%" align="center">
+            <tr>
+              <td width="23%" align="center"><?php if ($pageNum_forum > 0) { // Show if not first page ?>
+                  <a href="<?php printf("%s?pageNum_forum=%d%s", $currentPage, 0, $queryString_forum); ?>">First</a>
+                  <?php } // Show if not first page ?>
+              </td>
+              <td width="31%" align="center"><?php if ($pageNum_forum > 0) { // Show if not first page ?>
+                  <a href="<?php printf("%s?pageNum_forum=%d%s", $currentPage, max(0, $pageNum_forum - 1), $queryString_forum); ?>">Previous</a>
+                  <?php } // Show if not first page ?>
+              </td>
+              <td width="23%" align="center"><?php if ($pageNum_forum < $totalPages_forum) { // Show if not last page ?>
+                  <a href="<?php printf("%s?pageNum_forum=%d%s", $currentPage, min($totalPages_forum, $pageNum_forum + 1), $queryString_forum); ?>">Next</a>
+                  <?php } // Show if not last page ?>
+              </td>
+              <td width="23%" align="center"><?php if ($pageNum_forum < $totalPages_forum) { // Show if not last page ?>
+                  <a href="<?php printf("%s?pageNum_forum=%d%s", $currentPage, $totalPages_forum, $queryString_forum); ?>">Last</a>
+                  <?php } // Show if not last page ?>
+              </td>
+            </tr>
+          </table>
+          Records <?php echo ($startRow_forum + 1) ?> to <?php echo min($startRow_forum + $maxRows_forum, $totalRows_forum) ?> of <?php echo $totalRows_forum ?>
+          </p>
+          <p>&nbsp;</p></td>
+        <td width="194"><iframe marginwidth="0" 
+            marginheight="0" src="right.html" 
+            frameborder="0" width="194" height="1" target="contents"></iframe></td>
+      </tr>
+      
+      <tr>
+        <td height="70" colspan="2"><div align="center">
+          <p>&nbsp;</p>
+          <p class="style8"><a href="index.php">Home</a> | <a href="whoweare.php">Who we are</a> | <a href="whatwedo.php">What we do</a> | <a href="forum.php">Business Forum </a> | <a href="news.php">News/Events</a> | <a href="enquire.php">Enquire</a> | <a href="contactus.php">Contact us</a><br>
+            <br>
+            <span class="style3">Copyright &copy;2007 Norwood Business Haus. All 
+                    Rights Reserved.</span><br>
+                    <span class="style19">A <a href="http://www.webthinkers.net" target="_blank">webThinkers</a></span> design. </p>
+        </div></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+
+
+
+<map name="Map">
+        <area shape="rect" coords="26,13,68,26" href="index.html">
+        <area shape="rect" coords="105,12,193,26" href="whoweare.html">
+        <area shape="rect" coords="228,14,316,27" href="whatwedo.html">
+        <area shape="rect" coords="359,14,404,27" href="forum.html">
+        <area shape="rect" coords="454,13,557,27" href="news.html">
+        <area shape="rect" coords="597,11,650,27" href="equire.html">
+        <area shape="rect" coords="688,13,763,26" href="contact.html">
+      </map>
+
+<?php
+mysql_free_result($forum);
+?>
+
+
+<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">try {var pageTracker = _gat._getTracker("UA-3915335-1");pageTracker._trackPageview();} catch(err) {}</script>
+
+</BODY></HTML>

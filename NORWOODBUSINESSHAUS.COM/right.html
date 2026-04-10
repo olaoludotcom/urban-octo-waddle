@@ -1,0 +1,186 @@
+<?php require_once('Connections/nbh.php'); ?>
+<?php
+$currentPage = $_SERVER["PHP_SELF"];
+
+$maxRows_Recordset1 = 10;
+$pageNum_Recordset1 = 0;
+if (isset($_GET['pageNum_Recordset1'])) {
+  $pageNum_Recordset1 = $_GET['pageNum_Recordset1'];
+}
+$startRow_Recordset1 = $pageNum_Recordset1 * $maxRows_Recordset1;
+
+mysql_select_db($database_nbh, $nbh);
+$query_Recordset1 = "SELECT * FROM forum";
+$query_limit_Recordset1 = sprintf("%s LIMIT %d, %d", $query_Recordset1, $startRow_Recordset1, $maxRows_Recordset1);
+$Recordset1 = mysql_query($query_limit_Recordset1, $nbh) or die(mysql_error());
+$row_Recordset1 = mysql_fetch_assoc($Recordset1);
+
+if (isset($_GET['totalRows_Recordset1'])) {
+  $totalRows_Recordset1 = $_GET['totalRows_Recordset1'];
+} else {
+  $all_Recordset1 = mysql_query($query_Recordset1);
+  $totalRows_Recordset1 = mysql_num_rows($all_Recordset1);
+}
+$totalPages_Recordset1 = ceil($totalRows_Recordset1/$maxRows_Recordset1)-1;
+
+$queryString_Recordset1 = "";
+if (!empty($_SERVER['QUERY_STRING'])) {
+  $params = explode("&", $_SERVER['QUERY_STRING']);
+  $newParams = array();
+  foreach ($params as $param) {
+    if (stristr($param, "pageNum_Recordset1") == false && 
+        stristr($param, "totalRows_Recordset1") == false) {
+      array_push($newParams, $param);
+    }
+  }
+  if (count($newParams) != 0) {
+    $queryString_Recordset1 = "&" . htmlentities(implode("&", $newParams));
+  }
+}
+$queryString_Recordset1 = sprintf("&totalRows_Recordset1=%d%s", $totalRows_Recordset1, $queryString_Recordset1);
+?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Welcome to Norwood Business Haus</TITLE>
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<META 
+content="Norwood" 
+name=keywords>
+<META content=RevealTrans(Duration=4,Transition=12) http-equiv=Page-Enter><LINK 
+href="icons/favicon.ico" rel=icon><LINK href="icons/favicon.ico" 
+rel="SHORTCUT ICON"><LINK href="main.css" 
+rel=stylesheet type=text/css>
+
+<style type="text/css">
+<!--
+.style17 {font-size: 8px}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #003333;
+}
+a {
+	font-size: 11px;
+	color: #003333;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #333333;
+}
+a:hover {
+	text-decoration: underline;
+	color: #333333;
+}
+a:active {
+	text-decoration: none;
+	color: #003333;
+}
+-->
+</style>
+</head>
+
+<body>
+<table width="194" height="488" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="192" height="27">	
+					<FORM name="search" action="search.php" method="post" target="_parent">
+					<table width="190" height="19" border="0" cellpadding="3" cellspacing="3">
+      <tr>
+        <td height="19">
+						<table width="180" height="19">
+						  <tr><td width="130">
+<input type="text" size="19" name="search" class="meg_header" value="Search this site"></td><td width="38"><A href="javascript:search.submit()">
+<label>
+<input name="Submit" type="submit" class="meg_header" value="Go">
+</label>
+</A>
+          </td>
+						  </tr></table></td>
+      </tr>
+    </table></FORM></td>
+  </tr>
+  <tr>
+    <td height="140" background="images/box.gif"><table width="184" height="137" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="10" height="32">&nbsp;</td>
+        <td width="174">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="105">&nbsp;</td>
+        <td><table width="167" height="90" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="61">&nbsp;</td>
+            <td width="106">&nbsp;</td>
+          </tr>
+          <tr>
+            <td height="23">Username</td>
+            <td><label>
+              <input name="textfield" type="text" size="17">
+            </label></td>
+          </tr>
+
+          <tr>
+            <td height="23">Password</td>
+            <td><input name="textfield2" type="text" size="17"></td>
+          </tr>
+          <tr>
+            <td height="23">&nbsp;</td>
+            <td><label>
+              <input type="submit" name="Submit2" value="Login">
+              <input type="submit" name="Submit22" value="Register">
+</label></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="7"></td>
+  </tr>
+  <tr>
+    <td height="150" background="images/box2.gif"><table width="184" height="150" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="17" height="29">&nbsp;</td>
+        <td width="167">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="121">&nbsp;</td>
+        <td><p align="justify"><br />
+          Norwood creates an interactive and intellectual forum-an avenue for professionals, business analysts and other stakeholders to air their views on business issues. <a href="forum.html" target="_parent"></a><br />
+          <br />
+        </p></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="7"></td>
+  </tr>
+  <tr>
+    <td height="141" background="images/box3.gif"><table width="184" height="135" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="15" height="29">&nbsp;</td>
+        <td width="169">&nbsp;</td>
+      </tr>
+      <tr>
+        <td height="106">&nbsp;</td>
+        <td valign="top"><br>
+          Do you need a more rewarding job? You are in the right place. <br>
+          <br>
+          <br>
+          S<a href="carrier.html" target="_parent">ubmit your CV</a>. </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+
+<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">try {var pageTracker = _gat._getTracker("UA-3915335-1");pageTracker._trackPageview();} catch(err) {}</script>
+
+</body>
+</html>
