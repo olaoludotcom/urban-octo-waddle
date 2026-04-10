@@ -1,0 +1,6 @@
+[10-Jul-2007 13:16:27] PHP Warning:  mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: Access denied for user 'root'@'localhost' (using password: NO) in /home/norwood/public_html/Connections/admin.php on line 9
+[10-Jul-2007 13:16:27] PHP Fatal error:  Access denied for user 'root'@'localhost' (using password: NO) in /home/norwood/public_html/Connections/admin.php on line 9
+[14-Jul-2007 02:27:02] PHP Warning:  mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: Access denied for user 'root'@'localhost' (using password: NO) in /home/norwood/public_html/Connections/admin.php on line 9
+[14-Jul-2007 02:27:02] PHP Fatal error:  Access denied for user 'root'@'localhost' (using password: NO) in /home/norwood/public_html/Connections/admin.php on line 9
+[15-Jul-2007 12:57:22] PHP Warning:  mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: Access denied for user 'root'@'localhost' (using password: NO) in /home/norwood/public_html/Connections/admin.php on line 9
+[15-Jul-2007 12:57:22] PHP Fatal error:  Access denied for user 'root'@'localhost' (using password: NO) in /home/norwood/public_html/Connections/admin.php on line 9
