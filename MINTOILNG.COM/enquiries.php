@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Mint Oil and Gas ::: Redefining Energy</title>
+<LINK href="main.css" type=text/css rel=stylesheet />
+<style type="text/css">
+<!--
+body {
+	background-color: #02276E;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+}
+a:link {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #689BCA;
+}
+a:hover {
+	text-decoration: underline;
+	color: #689BCA;
+}
+a:active {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+.style2 {
+	font-size: 6px;
+	font-weight: bold;
+}
+.style3 {font-size: 9px}
+.style8 {color: #333333}
+.style9 {color: #FFFFFF}
+-->
+</style>
+<script type="text/JavaScript">
+<!--
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<script language="JavaScript1.2">
+
+
+function reapply(){
+setTimeout("slideit()",2000)
+return true
+}
+window.onerror=reapply
+</script>
+<script language="JavaScript1.1">
+<!--
+var image1=new Image()
+image1.src="images/bannerheader3.jpg"
+var image2=new Image()
+image2.src="images/bannerheader.jpg"
+var image3=new Image()
+image3.src="images/bannerheader2.jpg"
+var image4=new Image()
+image4.src="images/bannerheader2.jpg"
+
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+//-->
+</script>
+<?php
+$msg = "Enquire info. \n\n";
+$msg .= "Name: $_POST[name]\n";
+$msg .= "Phone: $_POST[phone]\n";
+$msg .= "E-mail: $_POST[email]\n";
+$msg .= "Address: $_POST[address]\n";
+$msg .= "message: $_POST[message]\n";
+$email =  $_POST[email];
+//set up the mail
+$subject = "Enquire sent";//$_POST[subject];
+$recipient = "info@mintoilng.com"; //$_POST[recipient];
+$mailheaders = "From: MintOil $email";
+$mailheaders .= "Reply-To: $_POST[subject]";
+//send the mail
+mail($recipient, $subject, $msg, $mailheaders);
+?>
+</head>
+
+<body onLoad="slideit();MM_preloadImages('images/homeoff.jpg','images/aboutoff.jpg','images/servicesoff.jpg','images/productoff.jpg','images/contactoff.jpg','images/enquiriesoff.jpg','images/staffoff.jpg')">
+<table width="782" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+  <tr>
+    <td width="782" height="31" valign="top" background="images/topheader.jpg" bgcolor="#689BCA">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="91" background="images/nameheader.jpg">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="20"><img src="images/bannerheader2.jpg" name="slide" border="0" style="filter:blendTrans(duration=3)"></td>
+  </tr>
+  <tr>
+    <td height="162" valign="top"><table width="783" height="305" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="192" height="119" valign="top" bgcolor="#689BCA"><p>&nbsp;</p>
+          <table border="0" cellpadding="0" cellspacing="0" width="181">
+            <!-- fwtable fwsrc="link.png" fwbase="link.jpg" fwstyle="Dreamweaver" fwdocid = "460054801" fwnested="0" -->
+            <tr>
+              <td><img src="images/spacer.gif" width="181" height="1" border="0" alt="" /></td>
+              <td><img src="images/spacer.gif" width="1" height="1" border="0" alt="" /></td>
+            </tr>
+            <tr>
+              <td><a href="index.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('link_r1_c1','','images/homeoff.jpg',1);"><img name="link_r1_c1" src="images/link_r1_c1.jpg" width="181" height="24" border="0" id="link_r1_c1" alt="" /></a></td>
+              <td><img src="images/spacer.gif" width="1" height="24" border="0" alt="" /></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td><img src="images/spacer.gif" width="1" height="17" border="0" alt="" /></td>
+            </tr>
+            <tr>
+              <td><a href="aboutus.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('link_r3_c1','','images/aboutoff.jpg',1);"><img name="link_r3_c1" src="images/link_r3_c1.jpg" width="181" height="24" border="0" id="link_r3_c1" alt="" /></a></td>
+              <td><img src="images/spacer.gif" width="1" height="24" border="0" alt="" /></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td><img src="images/spacer.gif" width="1" height="18" border="0" alt="" /></td>
+            </tr>
+            <tr>
+              <td><a href="services.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('link_r5_c1','','images/servicesoff.jpg',1);"><img name="link_r5_c1" src="images/link_r5_c1.jpg" width="181" height="24" border="0" id="link_r5_c1" alt="" /></a></td>
+              <td><img src="images/spacer.gif" width="1" height="24" border="0" alt="" /></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td><img src="images/spacer.gif" width="1" height="20" border="0" alt="" /></td>
+            </tr>
+            <tr>
+              <td><a href="product.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('link_r7_c1','','images/productoff.jpg',1);"><img name="link_r7_c1" src="images/producton.jpg" width="181" height="24" border="0" id="link_r7_c1" alt="" /></a></td>
+              <td><img src="images/spacer.gif" width="1" height="24" border="0" alt="" /></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td><img src="images/spacer.gif" width="1" height="20" border="0" alt="" /></td>
+            </tr>
+            <tr>
+              <td><a href="contact.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('link_r9_c1','','images/contactoff.jpg',1);"><img name="link_r9_c1" src="images/link_r9_c1.jpg" width="181" height="24" border="0" id="link_r9_c1" alt="" /></a></td>
+              <td><img src="images/spacer.gif" width="1" height="24" border="0" alt="" /></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td><a href="staff.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('link_r11_c11','','images/staffoff.jpg',1)"><img name="link_r11_c11" src="images/staffon.jpg" width="181" height="24" border="0" id="link_r11_c11" alt="" /></a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td><img src="images/spacer.gif" width="1" height="17" border="0" alt="" /></td>
+            </tr>
+            <tr>
+              <td><a href="enquiries.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('link_r11_c1','','images/enquiriesoff.jpg',1);"><img name="link_r11_c1" src="images/link_r11_c1.jpg" width="181" height="24" border="0" id="link_r11_c1" alt="" /></a></td>
+              <td><img src="images/spacer.gif" width="1" height="24" border="0" alt="" /></td>
+            </tr>
+            <tr>
+              <td><img name="link_r12_c1" src="images/link_r12_c1.jpg" width="181" height="188" border="0" id="link_r12_c1" alt="" /></td>
+              <td><img src="images/spacer.gif" width="1" height="188" border="0" alt="" /></td>
+            </tr>
+          </table>
+          <p>&nbsp;</p>          </td>
+        <td width="590" valign="top" bgcolor="#689BCA"> <script>
+<!--
+////change number of images below 
+var number_of_images=4
+//change speed below (in seconds)
+var speed=3
+var step=1
+var whichimage=1
+function slideit(){
+if (!document.images)
+return
+if (document.all)
+slide.filters.blendTrans.apply()
+document.images.slide.src=eval("image"+step+".src")
+if (document.all)
+slide.filters.blendTrans.play()
+whichimage=step
+if (step<number_of_images)
+step++
+else
+step=1
+if (document.all)
+setTimeout("slideit()",speed*1000+3000)
+else
+setTimeout("slideit()",speed*1000)
+}
+function slidelink(){
+if (whichimage==1)
+window.location="link1.htm"
+else if (whichimage==4)
+window.location="link4.htm"
+else if (whichimage==2)
+window.location="link2.htm"
+else if (whichimage==3)
+window.location="link3.htm"
+}
+//-->
+</script><br />
+  <table width="374" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <form id="form1" name="form1" method="post" action="">
+        <td width="21">&nbsp;</td>
+        <td width="353"><font size="-20" color="#ffffff">
+          <script language="JavaScript1.1" type="text/javascript">
+        <!-- Hide from old browsers
+        now = new Date();
+        day = new Object();
+        month = new Object();
+        day[0] = "Sunday";
+        day[1] = "Monday";
+        day[2] = "Tuesday";
+        day[3] = "Wednesday";
+        day[4] = "Thursday";
+        day[5] = "Friday";
+        day[6] = "Saturday";
+        month[0] = "January.";
+        month[1] = "Febuary.";
+        month[2] = "March";
+        month[3] = "April";
+        month[4] = "May";
+        month[5] = "June";
+        month[6] = "July";
+        month[7] = "August.";
+        month[8] = "September.";
+        month[9] = "October.";
+        month[10] = "November.";
+        month[11] = "December.";
+        year = now.getYear();
+        if (year < 1000) year += 1900;
+        document.write(day[now.getDay()] + ", " + month[now.getMonth()] + " " + now.getDate() + ", " + year);
+        // Stop Hiding From Old Browsers -->
+       
+            </script>
+        </font></td>
+      </form>
+    </tr>
+  </table>
+  <br />
+
+          <table width="548" height="400" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+              <td width="386" valign="top" background="images/text.jpg"><br />
+<br />
+&nbsp;<img src="images/enquiriestag.jpg" width="162" height="28" /> <br />
+<table width="386" height="163" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td width="6%">&nbsp;</td>
+                    <td width="89%" valign="top"><div align="justify">
+                      <p><br />
+                        <span class="style9">Thank you for your enquiries. We shall revert to you shortly.</span></p>
+                      <p><span class="style9"><a href="http://www.mintoilng.com" target="_blank">Mint Oil and Gas Limited</a></span><br />
+                        <br />
+                        </p>
+                      </div></td>
+                    <td width="5%">&nbsp;</td>
+                  </tr>
+                </table>                
+                </td>
+              <td width="162"><div align="left"><img src="images/pics2.jpg" width="161" height="234" /></div></td>
+            </tr>
+            <tr>
+              <td height="166" colspan="2" valign="top"><br />
+                <table width="100%" height="165" border="0" cellpadding="0" cellspacing="0" bordercolor="#999999" class="border1">
+                  <tr>
+                    <td bgcolor="#DEDDE1"><table width="101%" height="162" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td width="65%"><p><br />
+                                  <img src="images/specialtag.jpg" width="185" height="23" /></p>
+                              <table width="99%" height="80" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td width="30%"><div align="center"><br />
+                                          <br />
+                                          <img src="images/oilimage.jpg" width="94" height="81" /></div></td>
+                                  <td width="70%"><p align="justify"><strong>Energy Guide</strong>: <br />
+                                          <br />
+                                    The oil industry is often divided into three major sectors: upstream, midstream and downstream. However, midstream operations are usually simply included in the downstream category which is our major area of services .<span class="style2">&gt;&gt;</span> <a href="specials.html" class="style3">Learn more</a> </p></td>
+                                </tr>
+                            </table></td>
+                          <td width="2%" valign="bottom"><br />
+                              <br />
+                              <img src="images/line.jpg" width="9" height="130" /></td>
+                          <td width="33%" valign="bottom"><br />
+                              <img src="images/resource.jpg" width="126" height="23" />
+                              <table width="169" height="45" border="0" align="center" cellpadding="0" cellspacing="0" class="border1">
+                                <tr>
+                                  <td width="175" background="images/oildip.jpg">&nbsp;</td>
+                                </tr>
+                              </table>
+                            <table width="94%" height="39" border="0" align="center" cellpadding="3" cellspacing="0">
+                                <tr>
+                                  <td width="88%" height="13"><label> <br />
+                                        <select name="select" size="1" onchange="MM_jumpMenu('parent',this,0)">
+                                          <option value="#">....Quick Link...</option>
+                                          <option value="aboutus.html">About us</option>
+                                          <option value="services.html">Our services</option>
+                                          <option value="product.html">Our product</option>
+                                          <option value="contact.html">Contact us</option>
+                                          <option value="enquiries.html">Enquiries</option>
+                                        </select>
+                                  </label></td>
+                                </tr>
+                                <tr>
+                                  <td height="13"><select name="menu1" onchange="MM_jumpMenu('parent',this,0)">
+                                      <option value="" selected="selected">Online News</option>
+                                      <option value="http://www.ngrguardiannews.com">Guardian</option>
+                                      <option value="http://www.thisdayonline.com">Thisday</option>
+                                      <option value="http://www.sunnewsonline.com">The Sun</option>
+                                      <option value="http://www.vanguardngr.com">Vanguard</option>
+                                      <option value="http://www.newage-online.com">Newage</option>
+                                      <option value="http://www.businessworldng.com">BusinessWorld</option>
+                                      <option value="http://www.dailytrust.com">Daily Trust</option>
+                                      <option value="http://www.financialstandardnews.com">Financial Standard</option>
+                                      <option value="http://www.punchonthweb.com">Punch</option>
+                                      <option value="http://www.tribune.com.ng">Tribune</option>
+                                      <option value="http://www.businessdayonline.com">BusinessDAY</option>
+                                      <option value="http://www.kickoffnigeria.com">Kickoff</option>
+                                      <option value="http://www.technologyworldreport.com">Technologyworldreport</option>
+                                  </select></td>
+                                </tr>
+                                <tr>
+                                  <td height="13">&nbsp;</td>
+                                </tr>
+                            </table></td>
+                        </tr>
+                    </table></td>
+                  </tr>
+                </table></td>
+              </tr>
+          </table>          
+       </td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="30" valign="top" background="images/footer.jpg"><div align="left"><br />
+          <font color="#689BCA"> &nbsp; &nbsp; &nbsp; <span class="style8">All Right Reserved.  Mint Oil and Gas Limited  &copy; 2007 copyright . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;  Design by <a href="http://www.webthinkers.net" target="_blank">Webthinkers</a> :::</span></div></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">try {var pageTracker = _gat._getTracker("UA-3915335-5");pageTracker._trackPageview();} catch(err) {}</script>
+
+</body>
+</html>
